@@ -1,13 +1,5 @@
 {
-  "itemGroup.templatemod": "Example Mod Tab",
-  "block.templatemod.example_block": "Example Block",
-  "item.templatemod.example_item": "Example Item",
-
-  "templatemod.configuration.title": "Template Mod Configs",
-  "templatemod.configuration.section.templatemod.common.toml": "Template Mod Configs",
-  "templatemod.configuration.section.templatemod.common.toml.title": "Template Mod Configs",
-  "templatemod.configuration.items": "Item List",
-  "templatemod.configuration.logDirtBlock": "Log Dirt Block",
-  "templatemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "templatemod.configuration.magicNumber": "Magic Number"
+  "item.templatemod.test_item": "Test Item",
+  "block.templatemod.test_block": "Test Block",
+  "creativetabs.templatemod.test_tab" : "Test Tab"
 }
