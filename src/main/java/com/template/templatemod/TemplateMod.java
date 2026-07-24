@@ -2,7 +2,9 @@ package com.template.templatemod;
 
 import com.template.templatemod.block.ModBlocks;
 import com.template.templatemod.creativetab.ModCreativeTabs;
+import com.template.templatemod.effect.ModEffects;
 import com.template.templatemod.item.ModItems;
+import com.template.templatemod.potion.ModPotion;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -50,6 +52,9 @@ public class TemplateMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
+        ModEffects.register(modEventBus);
+
+        ModPotion.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 
