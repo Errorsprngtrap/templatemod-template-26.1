@@ -23,6 +23,18 @@ public class ModCreativeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.TEST_ITEM);
                         output.accept(ModBlocks.TEST_BLOCK);
+                        output.accept(ModItems.TEST_SWORD);
+                        output.accept(ModItems.TEST_PICKAXE);
+                        output.accept(ModItems.TEST_AXE);
+                        output.accept(ModItems.TEST_SHOVEL);
+                        output.accept(ModItems.TEST_HOE);
+                        output.accept(ModItems.TEST_SPEAR);
+
+                        output.accept(ModItems.TEST_HELMET);
+                        output.accept(ModItems.TEST_CHESTPLATE);
+                        output.accept(ModItems.TEST_BOOTS);
+                        output.accept(ModItems.TEST_LEGGINGS);
+
                     })
                     .build()
     );

@@ -31,7 +31,7 @@ public class ModDataGenerators {
         generator.addProvider(true,new ModItemTagProvider(packoutput, lookupProvider));
 
         generator.addProvider(true,new ModDataPackProvider(packoutput, lookupProvider));
-
+        generator.addProvider(true,new ModEquipmentAsset(packoutput));
 
 
 

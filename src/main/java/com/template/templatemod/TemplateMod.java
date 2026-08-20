@@ -1,5 +1,6 @@
 package com.template.templatemod;
 
+import com.template.templatemod.attachmenttype.ModAttachmentType;
 import com.template.templatemod.block.ModBlocks;
 import com.template.templatemod.creativetab.ModCreativeTabs;
 import com.template.templatemod.effect.ModEffects;
@@ -53,6 +54,7 @@ public class TemplateMod {
         ModBlocks.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModAttachmentType.register(modEventBus);
 
         ModPotion.register(modEventBus);
 
