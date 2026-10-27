@@ -1,8 +1,7 @@
 package com.template.templatemod.datagen;
 
 import com.template.templatemod.TemplateMod;
-import com.template.templatemod.armormaterial.ModArmorMaterial;
-import net.minecraft.client.data.models.EquipmentAssetProvider;
+import com.template.templatemod.armormaterial.ModArmorMaterials;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -24,8 +23,10 @@ public class ModEquipmentAsset implements DataProvider {
     }
 
     private static void bootstrap(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> output) {
-        output.accept(ModArmorMaterial.TEST_KEY, EquipmentClientInfo.builder()
+        output.accept(ModArmorMaterials.TEST_KEY, EquipmentClientInfo.builder()
                 .addHumanoidLayers(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID, "test"), false)
+                        .addLayers(EquipmentClientInfo.LayerType.HORSE_BODY,
+                                new EquipmentClientInfo.Layer(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"test")))
                 .build());
     }
 

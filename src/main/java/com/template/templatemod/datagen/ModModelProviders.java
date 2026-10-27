@@ -1,6 +1,7 @@
 package com.template.templatemod.datagen;
 
 import com.template.templatemod.TemplateMod;
+import com.template.templatemod.armormaterial.ModArmorMaterials;
 import com.template.templatemod.block.ModBlocks;
 import com.template.templatemod.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -27,10 +28,17 @@ public class ModModelProviders extends ModelProvider {
 
         itemModels.generateSpear(ModItems.TEST_SPEAR.get());
 
-        itemModels.generateFlatItem(ModItems.TEST_HELMET.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_BOOTS.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+//        itemModels.generateFlatItem(ModItems.TEST_HELMET.get(), ModelTemplates.FLAT_ITEM);
+//        itemModels.generateFlatItem(ModItems.TEST_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+//        itemModels.generateFlatItem(ModItems.TEST_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+//        itemModels.generateFlatItem(ModItems.TEST_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+
+        itemModels.generateTrimmableItem(ModItems.TEST_HELMET.get(), ModArmorMaterials.TEST_KEY,ItemModelGenerators.TRIM_PREFIX_HELMET,false);
+        itemModels.generateTrimmableItem(ModItems.TEST_CHESTPLATE.get(), ModArmorMaterials.TEST_KEY,ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,false);
+        itemModels.generateTrimmableItem(ModItems.TEST_LEGGINGS.get(), ModArmorMaterials.TEST_KEY,ItemModelGenerators.TRIM_PREFIX_LEGGINGS,false);
+        itemModels.generateTrimmableItem(ModItems.TEST_BOOTS.get(), ModArmorMaterials.TEST_KEY,ItemModelGenerators.TRIM_PREFIX_BOOTS,false);
+
+        itemModels.generateFlatItem(ModItems.TEST_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
 
         //blocks
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK.get());

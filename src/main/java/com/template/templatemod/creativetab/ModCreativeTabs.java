@@ -34,6 +34,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.TEST_CHESTPLATE);
                         output.accept(ModItems.TEST_BOOTS);
                         output.accept(ModItems.TEST_LEGGINGS);
+                        output.accept(ModItems.TEST_HORSE_ARMOR);
 
                     })
                     .build()
