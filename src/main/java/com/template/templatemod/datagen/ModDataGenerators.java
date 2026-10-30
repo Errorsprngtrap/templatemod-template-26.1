@@ -23,7 +23,8 @@ public class ModDataGenerators {
 
         generator.addProvider(true,new ModModelProviders(packoutput));
         generator.addProvider(true, new LootTableProvider(packoutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)),
+                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK),
+                        new LootTableProvider.SubProviderEntry(ModEntitiesLootTableProvider::new, LootContextParamSets.ENTITY)),
                 lookupProvider)
         );
         generator.addProvider(true,new ModBlockTagProvider(packoutput, lookupProvider));
@@ -32,6 +33,9 @@ public class ModDataGenerators {
 
         generator.addProvider(true,new ModDataPackProvider(packoutput, lookupProvider));
         generator.addProvider(true,new ModEquipmentAsset(packoutput));
+
+        generator.addProvider(true,new ModSoundsProvider(packoutput));
+
 
 
 

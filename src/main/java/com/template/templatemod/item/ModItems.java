@@ -2,15 +2,16 @@ package com.template.templatemod.item;
 
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.armormaterial.ModArmorMaterials;
+import com.template.templatemod.entity.ModEntities;
+import com.template.templatemod.entity.custom.CubeMobEntity;
 import com.template.templatemod.toolmaterial.ModToolMaterial;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.Locale;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TemplateMod.MOD_ID);
@@ -72,6 +73,11 @@ public class ModItems {
     public static final DeferredItem<Item> TEST_HORSE_ARMOR = ITEMS.registerItem(
             "test_horse_armor",
             properties -> new Item(properties.horseArmor(ModArmorMaterials.TEST_ARMOR_MATERIAL))
+    );
+
+    public static final DeferredItem<Item> CUBEMOB_SPAWN_EGG = ITEMS.registerItem(
+            "cuibemob_spawn_egg".toLowerCase(Locale.ROOT),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.CUBEMOB.get()))
     );
 
     public static void register(IEventBus eventBus){

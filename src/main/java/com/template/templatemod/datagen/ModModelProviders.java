@@ -40,6 +40,8 @@ public class ModModelProviders extends ModelProvider {
 
         itemModels.generateFlatItem(ModItems.TEST_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
 
+        itemModels.generateFlatItem(ModItems.CUBEMOB_SPAWN_EGG.get(),ModelTemplates.FLAT_ITEM);
+
         //blocks
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK.get());
     }

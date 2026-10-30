@@ -36,6 +36,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.TEST_LEGGINGS);
                         output.accept(ModItems.TEST_HORSE_ARMOR);
 
+                        output.accept(ModItems.CUBEMOB_SPAWN_EGG);
                     })
                     .build()
     );

@@ -1,12 +1,18 @@
 package com.template.templatemod;
 
+import com.template.templatemod.entity.ModEntities;
+import com.template.templatemod.entity.client.CubeMobModel;
+import com.template.templatemod.entity.client.CubeMobRenderer;
+import com.template.templatemod.entity.client.ModModelLayerLocations;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -24,8 +30,17 @@ public class TemplateModClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
+
+        EntityRenderers.register(ModEntities.CUBEMOB.get(), CubeMobRenderer::new);
+
         // Some client setup code
-        TemplateMod.LOGGER.info("HELLO FROM CLIENT SETUP");
-        TemplateMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+//        TemplateMod.LOGGER.info("HELLO FROM CLIENT SETUP");
+//        TemplateMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
+
+    @SubscribeEvent
+    public static void  registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
+        event.registerLayerDefinition(ModModelLayerLocations.CUBEMOB, CubeMobModel::createBodyLayer);
+    }
+
 }
