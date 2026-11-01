@@ -3,6 +3,7 @@ package com.template.templatemod.event;
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.entity.ModEntities;
 import com.template.templatemod.entity.custom.CubeMobEntity;
+import com.template.templatemod.entity.custom.PuffBallEntity;
 import com.template.templatemod.item.ModItems;
 import com.template.templatemod.potion.ModPotion;
 import net.minecraft.world.item.alchemy.Potions;
@@ -22,5 +23,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void onRegisterAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.CUBEMOB.get(), CubeMobEntity.createCubeMobAttributes().build());
+        event.put(ModEntities.PUFFBALL.get(), PuffBallEntity.createPuffBallAttributes().build());
     }
 }

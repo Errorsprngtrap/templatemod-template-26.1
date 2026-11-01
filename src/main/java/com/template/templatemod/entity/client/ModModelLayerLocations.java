@@ -7,4 +7,7 @@ import net.minecraft.resources.Identifier;
 public class ModModelLayerLocations {
     public static final ModelLayerLocation CUBEMOB =
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"cubemob"),"main");
+
+    public static final ModelLayerLocation PUFFBALL =
+            new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"puffball"),"main");
 }

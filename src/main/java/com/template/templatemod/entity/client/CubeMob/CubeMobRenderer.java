@@ -1,8 +1,9 @@
-package com.template.templatemod.entity.client;
+package com.template.templatemod.entity.client.CubeMob;
 
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.template.templatemod.TemplateMod;
+import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.custom.CubeMobEntity;
 import com.template.templatemod.entity.variant.CubeMobVariant;
 import net.minecraft.client.renderer.SubmitNodeCollector;

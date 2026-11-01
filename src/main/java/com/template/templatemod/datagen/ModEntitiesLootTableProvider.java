@@ -33,6 +33,14 @@ public class ModEntitiesLootTableProvider extends EntityLootSubProvider {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries,UniformGenerator.between(0.0F, 1.0F)))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer()))));
+
+        add(ModEntities.PUFFBALL.get(),
+                LootTable.lootTable().withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.WHITE_WOOL)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries,UniformGenerator.between(0.0F, 1.0F)))
+                                .when(LootItemKilledByPlayerCondition.killedByPlayer()))));
     }
 
     @Override

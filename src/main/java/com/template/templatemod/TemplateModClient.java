@@ -1,10 +1,11 @@
 package com.template.templatemod;
 
 import com.template.templatemod.entity.ModEntities;
-import com.template.templatemod.entity.client.CubeMobModel;
-import com.template.templatemod.entity.client.CubeMobRenderer;
+import com.template.templatemod.entity.client.CubeMob.CubeMobModel;
+import com.template.templatemod.entity.client.CubeMob.CubeMobRenderer;
 import com.template.templatemod.entity.client.ModModelLayerLocations;
-import net.minecraft.client.Minecraft;
+import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
+import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,6 +33,7 @@ public class TemplateModClient {
     static void onClientSetup(FMLClientSetupEvent event) {
 
         EntityRenderers.register(ModEntities.CUBEMOB.get(), CubeMobRenderer::new);
+        EntityRenderers.register(ModEntities.PUFFBALL.get(), PuffBallRenderer::new);
 
         // Some client setup code
 //        TemplateMod.LOGGER.info("HELLO FROM CLIENT SETUP");
@@ -41,6 +43,7 @@ public class TemplateModClient {
     @SubscribeEvent
     public static void  registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(ModModelLayerLocations.CUBEMOB, CubeMobModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayerLocations.PUFFBALL, PuffBallModel::createBodyLayer);
     }
 
 }
