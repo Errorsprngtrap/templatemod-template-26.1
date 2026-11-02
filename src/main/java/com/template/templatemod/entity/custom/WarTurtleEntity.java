@@ -201,4 +201,10 @@ public class WarTurtleEntity extends TamableAnimal {
 
         this.resetLastPoseChangeTick(poseTick);
     }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder entityData) {
+        super.defineSynchedData(entityData);
+        entityData.define(LAST_POSE_CHANGE_TICK, 0L);
+    }
 }
