@@ -33,7 +33,7 @@ public class ModEntities {
             ()-> EntityType.Builder.of(PuffBallEntity::new, MobCategory.CREATURE).sized(1,1).build(PUFFBALL_KEY));
 
     public static final Supplier<EntityType<WarTurtleEntity>> WAR_TURTLE = ENTITY_TYPES.register("war_turtle",
-            ()-> EntityType.Builder.of(WarTurtleEntity::new, MobCategory.CREATURE).sized(1,1).build(WAR_TURTLE_KEY));
+            ()-> EntityType.Builder.of(WarTurtleEntity::new, MobCategory.CREATURE).sized(1,1).noLootTable().build(WAR_TURTLE_KEY));
 
     public static void register(IEventBus bus) {
         ENTITY_TYPES.register(bus);

@@ -2,6 +2,7 @@ package com.template.templatemod.entity.client.WarTurtle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.template.templatemod.TemplateMod;
+import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.custom.WarTurtleEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,13 +12,13 @@ import net.minecraft.resources.Identifier;
 
 public class WarTurtleRenderer extends MobRenderer<WarTurtleEntity, WarTurtleRenderState, WarTurtleModel> {
 
-    public WarTurtleRenderer(EntityRendererProvider.Context context, WarTurtleModel model, float shadow) {
-        super(context, model, shadow);
+    public WarTurtleRenderer(EntityRendererProvider.Context context) {
+        super(context, new WarTurtleModel(context.bakeLayer(ModModelLayerLocations.WARTURTLE)), 0.4f);
     }
 
     @Override
     public Identifier getTextureLocation(WarTurtleRenderState state) {
-        return Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID, "textures/entity/war_turtle/war_turtle.png");
+        return Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID, "textures/entity/warturtle/warturtle.png");
     }
 
     @Override

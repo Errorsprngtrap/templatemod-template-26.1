@@ -38,6 +38,7 @@ public class ModCreativeTabs {
 
                         output.accept(ModItems.CUBEMOB_SPAWN_EGG);
                         output.accept(ModItems.PUFFBALL_SPAWN_EGG);
+                        output.accept(ModItems.WARTURTLE_SPAWN_EGG);
                     })
                     .build()
     );

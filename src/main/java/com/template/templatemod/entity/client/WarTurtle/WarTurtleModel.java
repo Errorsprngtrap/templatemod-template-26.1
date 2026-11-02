@@ -84,6 +84,7 @@ public class WarTurtleModel extends EntityModel<WarTurtleRenderState> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(state.yRot,state.xRot);
 
+        Chest.visible = false;
         this.walkingAnimation.applyWalk(state.walkAnimationPos,state.walkAnimationSpeed,2f,2.5f);
         this.idleAnimation.apply(state.idleAnimationState,state.ageInTicks,1);
     }

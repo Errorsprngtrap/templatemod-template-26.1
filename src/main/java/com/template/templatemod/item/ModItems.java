@@ -85,6 +85,11 @@ public class ModItems {
             properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.PUFFBALL.get()))
     );
 
+    public static final DeferredItem<Item> WARTURTLE_SPAWN_EGG = ITEMS.registerItem(
+            "war_turtle_spawn_egg".toLowerCase(Locale.ROOT),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.WAR_TURTLE.get()))
+    );
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
