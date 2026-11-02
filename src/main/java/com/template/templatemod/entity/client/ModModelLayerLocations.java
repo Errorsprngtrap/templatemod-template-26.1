@@ -10,4 +10,7 @@ public class ModModelLayerLocations {
 
     public static final ModelLayerLocation PUFFBALL =
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"puffball"),"main");
+
+    public static final ModelLayerLocation WARTURTLE =
+            new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"warturtle"),"main");
 }

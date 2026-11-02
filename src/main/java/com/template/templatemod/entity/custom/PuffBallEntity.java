@@ -67,8 +67,6 @@ public class PuffBallEntity extends Animal {
     }
 
     //Sounds
-
-
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
         return SoundEvents.ZOMBIE_AMBIENT;

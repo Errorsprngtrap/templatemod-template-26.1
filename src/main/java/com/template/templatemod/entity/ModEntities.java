@@ -3,6 +3,7 @@ package com.template.templatemod.entity;
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.entity.custom.CubeMobEntity;
 import com.template.templatemod.entity.custom.PuffBallEntity;
+import com.template.templatemod.entity.custom.WarTurtleEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -31,8 +32,8 @@ public class ModEntities {
     public static final Supplier<EntityType<PuffBallEntity>> PUFFBALL = ENTITY_TYPES.register("puffball",
             ()-> EntityType.Builder.of(PuffBallEntity::new, MobCategory.CREATURE).sized(1,1).build(PUFFBALL_KEY));
 
-    public static final Supplier<EntityType<PuffBallEntity>> WAR_TURTLE = ENTITY_TYPES.register("war_turtle",
-            ()-> EntityType.Builder.of(PuffBallEntity::new, MobCategory.CREATURE).sized(1,1).build(WAR_TURTLE_KEY));
+    public static final Supplier<EntityType<WarTurtleEntity>> WAR_TURTLE = ENTITY_TYPES.register("war_turtle",
+            ()-> EntityType.Builder.of(WarTurtleEntity::new, MobCategory.CREATURE).sized(1,1).build(WAR_TURTLE_KEY));
 
     public static void register(IEventBus bus) {
         ENTITY_TYPES.register(bus);

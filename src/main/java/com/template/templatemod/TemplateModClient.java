@@ -6,6 +6,8 @@ import com.template.templatemod.entity.client.CubeMob.CubeMobRenderer;
 import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
+import com.template.templatemod.entity.client.WarTurtle.WarTurtleModel;
+import com.template.templatemod.entity.client.WarTurtle.WarTurtleRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -34,7 +36,7 @@ public class TemplateModClient {
 
         EntityRenderers.register(ModEntities.CUBEMOB.get(), CubeMobRenderer::new);
         EntityRenderers.register(ModEntities.PUFFBALL.get(), PuffBallRenderer::new);
-
+        EntityRenderers.register(ModEntities.WAR_TURTLE.get(), WarTurtleRenderer::new);
         // Some client setup code
 //        TemplateMod.LOGGER.info("HELLO FROM CLIENT SETUP");
 //        TemplateMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
@@ -44,6 +46,7 @@ public class TemplateModClient {
     public static void  registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(ModModelLayerLocations.CUBEMOB, CubeMobModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.PUFFBALL, PuffBallModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE, WarTurtleModel::createBodyLayer);
     }
 
 }
