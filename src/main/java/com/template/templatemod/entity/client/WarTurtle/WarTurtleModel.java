@@ -84,9 +84,14 @@ public class WarTurtleModel extends EntityModel<WarTurtleRenderState> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(state.yRot,state.xRot);
 
-        Chest.visible = false;
         this.walkingAnimation.applyWalk(state.walkAnimationPos,state.walkAnimationSpeed,2f,2.5f);
         this.idleAnimation.apply(state.idleAnimationState,state.ageInTicks,1);
+
+        sitAnimation.apply(state.sitAnimationState,state.ageInTicks,1);
+        standupAnimation.apply(state.sitUpAnimationState,state.ageInTicks,1);
+        sitPoseAnimation.apply(state.sitPoseAnimationState, state.ageInTicks,1);
+
+        Chest.visible = false;
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {
