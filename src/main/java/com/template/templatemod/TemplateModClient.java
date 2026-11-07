@@ -8,6 +8,8 @@ import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleModel;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleRenderer;
+import com.template.templatemod.menu.ModMenuTypes;
+import com.template.templatemod.menu.custom.WarTurtleScreen;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,6 +18,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -47,6 +50,11 @@ public class TemplateModClient {
         event.registerLayerDefinition(ModModelLayerLocations.CUBEMOB, CubeMobModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.PUFFBALL, PuffBallModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE, WarTurtleModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerScreens(RegisterMenuScreensEvent event){
+        event.register(ModMenuTypes.WARTURTLE_MENU.get(),WarTurtleScreen::new);
     }
 
 }
