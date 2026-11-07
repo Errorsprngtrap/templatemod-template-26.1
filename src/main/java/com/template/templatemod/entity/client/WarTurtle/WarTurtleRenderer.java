@@ -14,6 +14,7 @@ public class WarTurtleRenderer extends MobRenderer<WarTurtleEntity, WarTurtleRen
 
     public WarTurtleRenderer(EntityRendererProvider.Context context) {
         super(context, new WarTurtleModel(context.bakeLayer(ModModelLayerLocations.WARTURTLE)), 0.4f);
+        this.addLayer(new WarTurtleArmorRenderLayer(this,context.getModelSet()));
     }
 
     @Override
@@ -43,5 +44,8 @@ public class WarTurtleRenderer extends MobRenderer<WarTurtleEntity, WarTurtleRen
         state.sitAnimationState.copyFrom(entity.sitAnimationState);
         state.sitPoseAnimationState.copyFrom(entity.sitPoseAnimationState);
         state.sitUpAnimationState.copyFrom(entity.sitUpAnimationState);
+
+        state.hasChest = entity.has1Chest();
+        state.bodyArmorItem = entity.getBodyArmorItem();
     }
 }

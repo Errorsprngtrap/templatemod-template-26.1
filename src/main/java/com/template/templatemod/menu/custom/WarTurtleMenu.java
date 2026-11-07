@@ -1,6 +1,7 @@
 package com.template.templatemod.menu.custom;
 
 import com.template.templatemod.entity.custom.WarTurtleEntity;
+import com.template.templatemod.item.Custom.WarTurtleArmor;
 import com.template.templatemod.menu.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -39,7 +40,8 @@ public class WarTurtleMenu extends AbstractContainerMenu {
         addSlot(new Slot(warturtleContainer, 0, 8, 36) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                return super.mayPlace(itemStack);
+
+                return itemStack.getItem() instanceof WarTurtleArmor;
             }
         });
 

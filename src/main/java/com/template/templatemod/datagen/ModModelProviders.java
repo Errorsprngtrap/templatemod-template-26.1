@@ -44,6 +44,8 @@ public class ModModelProviders extends ModelProvider {
         itemModels.generateFlatItem(ModItems.PUFFBALL_SPAWN_EGG.get(),ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.WARTURTLE_SPAWN_EGG.get(),ModelTemplates.FLAT_ITEM);
 
+        itemModels.generateFlatItem(ModItems.WARTURTLE_ARMOR.get(),ModelTemplates.FLAT_ITEM);
+
         //blocks
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK.get());
     }

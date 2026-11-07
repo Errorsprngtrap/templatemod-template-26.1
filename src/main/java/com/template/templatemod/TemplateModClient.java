@@ -50,6 +50,7 @@ public class TemplateModClient {
         event.registerLayerDefinition(ModModelLayerLocations.CUBEMOB, CubeMobModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.PUFFBALL, PuffBallModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE, WarTurtleModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE_ARMOR, WarTurtleModel::createBodyLayer);
     }
 
     @SubscribeEvent

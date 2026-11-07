@@ -91,7 +91,7 @@ public class WarTurtleModel extends EntityModel<WarTurtleRenderState> {
         standupAnimation.apply(state.sitUpAnimationState,state.ageInTicks,1);
         sitPoseAnimation.apply(state.sitPoseAnimationState, state.ageInTicks,1);
 
-        Chest.visible = false;
+        Chest.visible = state.hasChest;
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {

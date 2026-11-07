@@ -4,6 +4,7 @@ import com.template.templatemod.TemplateMod;
 import com.template.templatemod.armormaterial.ModArmorMaterials;
 import com.template.templatemod.entity.ModEntities;
 import com.template.templatemod.entity.custom.CubeMobEntity;
+import com.template.templatemod.item.Custom.WarTurtleArmor;
 import com.template.templatemod.toolmaterial.ModToolMaterial;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -88,6 +89,11 @@ public class ModItems {
     public static final DeferredItem<Item> WARTURTLE_SPAWN_EGG = ITEMS.registerItem(
             "war_turtle_spawn_egg".toLowerCase(Locale.ROOT),
             properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.WAR_TURTLE.get()))
+    );
+
+    public static final DeferredItem<Item> WARTURTLE_ARMOR = ITEMS.registerItem(
+            "warturtle_armor",
+            properties -> new WarTurtleArmor(properties.durability(200))
     );
 
     public static void register(IEventBus eventBus){
