@@ -27,10 +27,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 
-public class WarTurtleEntity extends TamableAnimal implements ContainerListener, HasCustomInventoryScreen {
+public class WarTurtleEntity extends TamableAnimal implements ContainerListener, HasCustomInventoryScreen , PlayerRideable{
     public final AnimationState sitAnimationState = new AnimationState();
     public final AnimationState sitPoseAnimationState = new AnimationState();
     public final AnimationState sitUpAnimationState = new AnimationState();
@@ -42,6 +43,7 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
     private static final EntityDataAccessor<Boolean> HAS_CHEST = SynchedEntityData.defineId(WarTurtleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_CHEST_2 = SynchedEntityData.defineId(WarTurtleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_CHEST_3 = SynchedEntityData.defineId(WarTurtleEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> HAS_SADDLE = SynchedEntityData.defineId(WarTurtleEntity.class, EntityDataSerializers.BOOLEAN);
 
     protected SimpleContainer inventory;
     private final int CHEST_SLOT = 2;
@@ -188,13 +190,18 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
 
-        if (!this.level().isClientSide() && itemStack.is(Items.PUMPKIN) && !this.isTame()) {
-            itemStack.consume(1, player);
-            this.tame(player);
-            return InteractionResult.SUCCESS_SERVER;
+        if (!this.level().isClientSide()) {
+            if (itemStack.is(Items.PUMPKIN) && !this.isTame()) {
+                itemStack.consume(1, player);
+                this.tame(player);
+                return InteractionResult.SUCCESS_SERVER;
+            } else if (this.isTame() && isSaddled() && !this.isVehicle()) {
+                player.startRiding(this);
+                return InteractionResult.SUCCESS;
+            }
         }
 
-        if (isTame() && hand == InteractionHand.MAIN_HAND && !isFood(itemStack) && !player.isSecondaryUseActive()) {
+        if (isTame() && hand == InteractionHand.MAIN_HAND && !isFood(itemStack) && !player.isSecondaryUseActive() && !isSaddled()) {
             toggleSitting();
             return InteractionResult.SUCCESS;
         } else if (this.isTame()) {
@@ -230,6 +237,7 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
 
         this.resetLastPoseChangeTick(poseTick);
 
+        //ibentory related
         this.createInventory();
         for (ItemStackWithSlot item : input.listOrEmpty("Items", ItemStackWithSlot.CODEC)) {
             if (item.isValidInContainer(this.inventory.getContainerSize())) {
@@ -247,6 +255,10 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
         if (inventory.getItem(CHEST_SLOT_3).is(Items.CHEST) && !has3Chest()) {
             setChest(CHEST_SLOT_3, true);
         }
+
+        if (inventory.getItem(1).is(Items.SADDLE) && !isSaddled()) {
+            this.entityData.set(HAS_SADDLE, true);
+        }
     }
 
     @Override
@@ -256,6 +268,7 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
         entityData.define(HAS_CHEST, false);
         entityData.define(HAS_CHEST_2, false);
         entityData.define(HAS_CHEST_3, false);
+        entityData.define(HAS_SADDLE, false);
     }
 
     //inventory shit
@@ -307,7 +320,7 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
     }
 
     public final int getInventorySize() {
-        return getInventorySize(3);
+        return getInventorySize(4);
     }
 
     protected void createInventory() {
@@ -389,6 +402,14 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
         if (container.getSlot(0).getItem().isEmpty() && isWearingBodyArmor()){
             setBodyArmorItem(ItemStack.EMPTY);
         }
+
+        if (container.getSlot(1).getItem().is(Items.SADDLE) && !isSaddled()){
+            this.entityData.set(HAS_SADDLE, true);
+        }
+
+        if (container.getSlot(1).getItem().isEmpty() && isSaddled()){
+            this.entityData.set(HAS_SADDLE, false);
+        }
     }
 
     @Override
@@ -423,5 +444,36 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
 
     private boolean canArmorAbsorb(DamageSource source) {
         return hasArmor() && !source.is(DamageTypeTags.BYPASSES_WOLF_ARMOR);
+    }
+
+    //all Saddle BS
+
+    @Override
+    public boolean isSaddled() {
+        return this.entityData.get(HAS_SADDLE);
+    }
+
+    @Override
+    public @Nullable LivingEntity getControllingPassenger() {
+        return (LivingEntity)(this.isSaddled() && this.getFirstPassenger() instanceof Player player ? player : super.getControllingPassenger());
+    }
+
+    @Override
+    protected void tickRidden(Player controller, Vec3 riddenInput) {
+        this.setRot(controller.getYRot(), controller.getXRot() * 0.5F);
+        this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
+        super.tickRidden(controller, riddenInput);
+    }
+
+    @Override
+    protected Vec3 getRiddenInput(Player controller, Vec3 selfInput) {
+        float sideways = controller.xxa * 0.5F;
+        float forward = controller.zza;
+        return new Vec3(sideways, 0.0, forward);
+    }
+
+    @Override
+    protected float getRiddenSpeed(Player controller) {
+        return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED));
     }
 }

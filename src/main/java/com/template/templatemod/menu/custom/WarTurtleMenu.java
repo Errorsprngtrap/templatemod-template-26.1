@@ -49,7 +49,7 @@ public class WarTurtleMenu extends AbstractContainerMenu {
         addSlot(new Slot(warturtleContainer, 1, 8, 54) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                return super.mayPlace(itemStack);
+                return itemStack.is(Items.SADDLE);
             }
         });
 
@@ -104,7 +104,7 @@ public class WarTurtleMenu extends AbstractContainerMenu {
 
         if (columns > 0) {
             for (int l = 0; l < columns; l++) {
-                this.addSlot(new Slot(warturtleContainer, 3 + l, 115 + l * 18, 54) {
+                this.addSlot(new Slot(warturtleContainer, 5 + l, 115 + l * 18, 54) {
                     @Override
                     public boolean isActive() {
                         return warturtleEntity.has1Chest();
@@ -112,7 +112,7 @@ public class WarTurtleMenu extends AbstractContainerMenu {
                 });
             }
             for (int l = 0; l < columns; l++) {
-                this.addSlot(new Slot(warturtleContainer, 3 + l + columns, 115 + l * 18, 54 - 18){
+                this.addSlot(new Slot(warturtleContainer, 5 + l + columns, 115 + l * 18, 54 - 18){
                     @Override
                     public boolean isActive() {
                         return warturtleEntity.has2Chest();
@@ -120,7 +120,7 @@ public class WarTurtleMenu extends AbstractContainerMenu {
                 });
             }
             for (int l = 0; l < columns; l++) {
-                this.addSlot(new Slot(warturtleContainer, 3 + l + 2 * columns, 115 + l * 18, 54 - 2 * 18){
+                this.addSlot(new Slot(warturtleContainer, 5 + l + 2 * columns, 115 + l * 18, 54 - 2 * 18){
                     @Override
                     public boolean isActive() {
                         return warturtleEntity.has3Chest();
