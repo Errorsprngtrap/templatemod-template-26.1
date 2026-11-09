@@ -476,4 +476,16 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
     protected float getRiddenSpeed(Player controller) {
         return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED));
     }
+
+    @Override
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
+        if (!this.level().isClientSide()) {
+            return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
+        } else {
+            float animSpeed = Math.min(0.25F, this.walkAnimation.speed());
+            float animPos = this.walkAnimation.position();
+            float offset = 0.12F * Mth.cos(animPos * 1.5F) * 2.0F * animSpeed;
+            return super.getPassengerAttachmentPoint(passenger, dimensions, scale).add(0.0, offset * scale, 0.0);
+        }
+    }
 }
