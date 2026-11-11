@@ -109,25 +109,67 @@ public class WarTurtleMenu extends AbstractContainerMenu {
                     public boolean isActive() {
                         return warturtleEntity.has1Chest();
                     }
+
+                    @Override
+                    public boolean mayPlace(ItemStack stack) {
+                        return warturtleEntity.has1Chest();
+                    }
                 });
             }
             for (int l = 0; l < columns; l++) {
-                this.addSlot(new Slot(warturtleContainer, 5 + l + columns, 115 + l * 18, 54 - 18){
+                this.addSlot(new Slot(warturtleContainer, 5 + l + columns, 115 + l * 18, 54 - 18) {
                     @Override
                     public boolean isActive() {
+                        return warturtleEntity.has2Chest();
+                    }
+
+                    @Override
+                    public boolean mayPlace(ItemStack stack) {
                         return warturtleEntity.has2Chest();
                     }
                 });
             }
             for (int l = 0; l < columns; l++) {
-                this.addSlot(new Slot(warturtleContainer, 5 + l + 2 * columns, 115 + l * 18, 54 - 2 * 18){
+                this.addSlot(new Slot(warturtleContainer, 5 + l + 2 * columns, 115 + l * 18, 54 - 2 * 18) {
                     @Override
                     public boolean isActive() {
+                        return warturtleEntity.has3Chest();
+                    }
+
+                    @Override
+                    public boolean mayPlace(ItemStack stack) {
                         return warturtleEntity.has3Chest();
                     }
                 });
             }
         }
+
+//        if (columns > 0) {
+//            for (int l = 0; l < columns; l++) {
+//                this.addSlot(new Slot(warturtleContainer, 5 + l, 115 + l * 18, 54) {
+//                    @Override
+//                    public boolean isActive() {
+//                        return warturtleEntity.has1Chest();
+//                    }
+//                });
+//            }
+//            for (int l = 0; l < columns; l++) {
+//                this.addSlot(new Slot(warturtleContainer, 5 + l + columns, 115 + l * 18, 54 - 18){
+//                    @Override
+//                    public boolean isActive() {
+//                        return warturtleEntity.has2Chest();
+//                    }
+//                });
+//            }
+//            for (int l = 0; l < columns; l++) {
+//                this.addSlot(new Slot(warturtleContainer, 5 + l + 2 * columns, 115 + l * 18, 54 - 2 * 18){
+//                    @Override
+//                    public boolean isActive() {
+//                        return warturtleEntity.has3Chest();
+//                    }
+//                });
+//            }
+//        }
 
         //player inventory
         for (int i1 = 0; i1 < 3; i1++) {
@@ -148,7 +190,7 @@ public class WarTurtleMenu extends AbstractContainerMenu {
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            int i = this.warturtleContainer.getContainerSize() + 1;
+            int i = this.warturtleContainer.getContainerSize();
             if (index < i) {
                 if (!this.moveItemStackTo(itemstack1, i, this.slots.size(), true)) {
                     return ItemStack.EMPTY;

@@ -40,6 +40,7 @@ public class WarTurtleModel extends EntityModel<WarTurtleRenderState> {
         this.Armor = this.Head.getChild("Armor");
         this.Chest = this.UpperBody.getChild("Chest");
 
+
         walkingAnimation = WarTurleAnimations.Walk.bake(root);
         sitAnimation = WarTurleAnimations.Sit.bake(root);
         sitPoseAnimation = WarTurleAnimations.Sitting.bake(root);
@@ -84,11 +85,26 @@ public class WarTurtleModel extends EntityModel<WarTurtleRenderState> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(state.yRot,state.xRot);
 
+
+        System.out.println(
+                "idle=" + state.idleAnimationState.isStarted() +
+                        " sit=" + state.sitAnimationState.isStarted() +
+                        " sitPose=" + state.sitPoseAnimationState.isStarted() +
+                        " sitUp=" + state.sitUpAnimationState.isStarted() +
+                        " | walkPos=" + state.walkAnimationPos +
+                        " walkSpeed=" + state.walkAnimationSpeed
+        );
+
+
         this.walkingAnimation.applyWalk(state.walkAnimationPos,state.walkAnimationSpeed,2f,2.5f);
+        System.out.println("L_Leg.xRot=" + this.L_Leg.xRot);
+
         this.idleAnimation.apply(state.idleAnimationState,state.ageInTicks,1);
 
         sitAnimation.apply(state.sitAnimationState,state.ageInTicks,1);
+
         standupAnimation.apply(state.sitUpAnimationState,state.ageInTicks,1);
+
         sitPoseAnimation.apply(state.sitPoseAnimationState, state.ageInTicks,1);
 
         Chest.visible = state.hasChest;

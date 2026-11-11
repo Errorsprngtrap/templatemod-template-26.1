@@ -96,6 +96,11 @@ public class ModItems {
             properties -> new WarTurtleArmor(properties.durability(200))
     );
 
+    public static final DeferredItem<Item> GIRAFFE_SPAWN_EGG = ITEMS.registerItem(
+            "girffe_spawn_egg".toLowerCase(Locale.ROOT),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.GIRAFFE.get()))
+    );
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

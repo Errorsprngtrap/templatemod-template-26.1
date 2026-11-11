@@ -2,6 +2,7 @@ package com.template.templatemod.entity;
 
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.entity.custom.CubeMobEntity;
+import com.template.templatemod.entity.custom.GiraffeEntity;
 import com.template.templatemod.entity.custom.PuffBallEntity;
 import com.template.templatemod.entity.custom.WarTurtleEntity;
 import net.minecraft.core.registries.Registries;
@@ -26,6 +27,9 @@ public class ModEntities {
     public static final ResourceKey<EntityType<?>> WAR_TURTLE_KEY = ResourceKey.create(Registries.ENTITY_TYPE,
             Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID, "war_turtle_key"));
 
+    public static final ResourceKey<EntityType<?>> GIRAFFE_KEY = ResourceKey.create(Registries.ENTITY_TYPE,
+            Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID, "giraffe_key"));
+
     public static final Supplier<EntityType<CubeMobEntity>> CUBEMOB = ENTITY_TYPES.register("cubemob",
             ()-> EntityType.Builder.of(CubeMobEntity::new, MobCategory.CREATURE).sized(1,1).build(CUBEMOB_KEY));
 
@@ -34,6 +38,9 @@ public class ModEntities {
 
     public static final Supplier<EntityType<WarTurtleEntity>> WAR_TURTLE = ENTITY_TYPES.register("war_turtle",
             ()-> EntityType.Builder.of(WarTurtleEntity::new, MobCategory.CREATURE).sized(1,1).noLootTable().build(WAR_TURTLE_KEY));
+
+    public static final Supplier<EntityType<GiraffeEntity>> GIRAFFE = ENTITY_TYPES.register("giraffe",
+            ()-> EntityType.Builder.of(GiraffeEntity::new, MobCategory.CREATURE).sized(1,1).noLootTable().build(GIRAFFE_KEY));
 
     public static void register(IEventBus bus) {
         ENTITY_TYPES.register(bus);

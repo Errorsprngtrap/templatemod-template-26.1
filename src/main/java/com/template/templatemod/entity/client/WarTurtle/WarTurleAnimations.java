@@ -140,7 +140,7 @@ public class WarTurleAnimations {
                     new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.LINEAR)
             ))
-            .build();
+            .looping().build();
 
     public static final AnimationDefinition Sit = AnimationDefinition.Builder.withLength(0.5F)
             .addAnimation("UpperBody", new AnimationChannel(AnimationChannel.Targets.ROTATION,

@@ -3,6 +3,8 @@ package com.template.templatemod;
 import com.template.templatemod.entity.ModEntities;
 import com.template.templatemod.entity.client.CubeMob.CubeMobModel;
 import com.template.templatemod.entity.client.CubeMob.CubeMobRenderer;
+import com.template.templatemod.entity.client.Giraffe.GiraffeModel;
+import com.template.templatemod.entity.client.Giraffe.GiraffeRenderer;
 import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
@@ -40,9 +42,7 @@ public class TemplateModClient {
         EntityRenderers.register(ModEntities.CUBEMOB.get(), CubeMobRenderer::new);
         EntityRenderers.register(ModEntities.PUFFBALL.get(), PuffBallRenderer::new);
         EntityRenderers.register(ModEntities.WAR_TURTLE.get(), WarTurtleRenderer::new);
-        // Some client setup code
-//        TemplateMod.LOGGER.info("HELLO FROM CLIENT SETUP");
-//        TemplateMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        EntityRenderers.register(ModEntities.GIRAFFE.get(), GiraffeRenderer::new);
     }
 
     @SubscribeEvent
@@ -51,6 +51,7 @@ public class TemplateModClient {
         event.registerLayerDefinition(ModModelLayerLocations.PUFFBALL, PuffBallModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE, WarTurtleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE_ARMOR, WarTurtleModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayerLocations.GIRAFFE, GiraffeModel::createBodyLayer);
     }
 
     @SubscribeEvent
