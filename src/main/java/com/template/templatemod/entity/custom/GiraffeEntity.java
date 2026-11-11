@@ -1,11 +1,12 @@
 package com.template.templatemod.entity.custom;
 
+import com.template.templatemod.entity.ModEntities;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.equine.AbstractHorse;
@@ -13,6 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 public class GiraffeEntity extends AbstractHorse {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -53,6 +56,17 @@ public class GiraffeEntity extends AbstractHorse {
         }
     }
 
+
+    @Override
+    public boolean isFood(ItemStack itemStack) {
+        return itemStack.is(Items.BREAD);
+    }
+
+    @Override
+    public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob partner) {
+        return ModEntities.GIRAFFE.get().create(level,EntitySpawnReason.BREEDING);
+    }
+
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         boolean shouldOpenInventory = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
@@ -73,5 +87,12 @@ public class GiraffeEntity extends AbstractHorse {
         } else {
             return super.mobInteract(player, hand);
         }
+    }
+
+
+
+    @Override
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
+        return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
     }
 }

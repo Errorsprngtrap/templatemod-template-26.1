@@ -14,13 +14,13 @@ import net.minecraft.resources.Identifier;
 
 public class GiraffeRenderer extends MobRenderer<GiraffeEntity,GiraffeRenderState,GiraffeModel> {
 
-    public GiraffeRenderer(EntityRendererProvider.Context context, GiraffeModel model) {
+    public GiraffeRenderer(EntityRendererProvider.Context context) {
         super(context, new GiraffeModel(context.bakeLayer(ModModelLayerLocations.GIRAFFE)), 0.5f);
     }
 
     @Override
     public Identifier getTextureLocation(GiraffeRenderState state) {
-        return Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"textures/entity/cubemob/cubemob.png");    }
+        return Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"textures/entity/giraffe/giraffe.png");    }
 
     @Override
     public void submit(GiraffeRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {

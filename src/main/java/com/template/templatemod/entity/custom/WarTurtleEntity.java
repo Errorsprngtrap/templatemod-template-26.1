@@ -103,10 +103,6 @@ public class WarTurtleEntity extends TamableAnimal implements ContainerListener,
         return l < (long) (this.isSitting() ? 40 : 52);
     }
 
-    public void setLastPoseTick(long lastPoseTick) {
-        this.entityData.set(LAST_POSE_CHANGE_TICK, lastPoseTick);
-    }
-
     //animation
     public void resetLastPoseChangeTick(long syncedPoseTickTime) {
         this.entityData.set(LAST_POSE_CHANGE_TICK, syncedPoseTickTime);
