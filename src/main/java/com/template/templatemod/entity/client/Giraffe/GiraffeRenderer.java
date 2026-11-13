@@ -16,6 +16,7 @@ public class GiraffeRenderer extends MobRenderer<GiraffeEntity,GiraffeRenderStat
 
     public GiraffeRenderer(EntityRendererProvider.Context context) {
         super(context, new GiraffeModel(context.bakeLayer(ModModelLayerLocations.GIRAFFE)), 0.5f);
+        this.addLayer(new GiraffeSaddleLayer(this,context.getModelSet()));
     }
 
     @Override
@@ -42,5 +43,6 @@ public class GiraffeRenderer extends MobRenderer<GiraffeEntity,GiraffeRenderStat
     public void extractRenderState(GiraffeEntity entity, GiraffeRenderState state, float partialTicks) {
         super.extractRenderState(entity, state, partialTicks);
         state.idleAnimationState.copyFrom(entity.idleAnimationState);
+        state.isSaddled = entity.isSaddled();
     }
 }

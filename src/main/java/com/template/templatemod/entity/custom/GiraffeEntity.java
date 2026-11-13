@@ -69,11 +69,13 @@ public class GiraffeEntity extends AbstractHorse {
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        System.out.println("mobInteract called, item=" + player.getItemInHand(hand));
         boolean shouldOpenInventory = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
         if (!this.isVehicle() && !shouldOpenInventory && (!this.isBaby() || !player.isHolding(Items.GOLDEN_DANDELION))) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (!itemStack.isEmpty()) {
                 if (this.isFood(itemStack)) {
+                    System.out.println("isFood=true, calling fedFood");
                     return this.fedFood(player, itemStack);
                 }
 

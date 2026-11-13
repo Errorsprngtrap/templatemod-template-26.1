@@ -5,6 +5,7 @@ import com.template.templatemod.entity.client.CubeMob.CubeMobModel;
 import com.template.templatemod.entity.client.CubeMob.CubeMobRenderer;
 import com.template.templatemod.entity.client.Giraffe.GiraffeModel;
 import com.template.templatemod.entity.client.Giraffe.GiraffeRenderer;
+import com.template.templatemod.entity.client.Giraffe.GiraffeSaddleModel;
 import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
@@ -52,6 +53,7 @@ public class TemplateModClient {
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE, WarTurtleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE_ARMOR, WarTurtleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.GIRAFFE, GiraffeModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayerLocations.GIRAFFE_SADDLE, GiraffeSaddleModel::createBodyLayer);
     }
 
     @SubscribeEvent

@@ -6,4 +6,5 @@ import net.minecraft.world.entity.AnimationState;
 
 public class GiraffeRenderState extends LivingEntityRenderState {
     public final AnimationState idleAnimationState = new AnimationState();
+    public boolean isSaddled = false;
 }

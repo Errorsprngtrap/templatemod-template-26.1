@@ -36,6 +36,8 @@ public class ModDataGenerators {
 
         generator.addProvider(true,new ModSoundsProvider(packoutput));
 
+        generator.addProvider(true,new ModEntityTypeTagProvider(packoutput, lookupProvider));
+
 
 
 
