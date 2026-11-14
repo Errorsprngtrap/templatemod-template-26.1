@@ -22,6 +22,8 @@ public class ModCreativeTabs {
                     .title(Component.translatable("creativetabs.templatemod.test_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.TEST_ITEM);
+                        output.accept(ModItems.TEST_ITEM_TWO);
+
                         output.accept(ModBlocks.TEST_BLOCK);
                         output.accept(ModItems.TEST_SWORD);
                         output.accept(ModItems.TEST_PICKAXE);

@@ -3,7 +3,7 @@ package com.template.templatemod.item;
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.armormaterial.ModArmorMaterials;
 import com.template.templatemod.entity.ModEntities;
-import com.template.templatemod.entity.custom.CubeMobEntity;
+import com.template.templatemod.item.Custom.TestItemComponent;
 import com.template.templatemod.item.Custom.WarTurtleArmor;
 import com.template.templatemod.toolmaterial.ModToolMaterial;
 import net.minecraft.world.item.*;
@@ -20,6 +20,11 @@ public class ModItems {
     public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerSimpleItem(
             "test_item",
             properties ->  properties
+    );
+
+    public static final DeferredItem<Item> TEST_ITEM_TWO = ITEMS.registerItem(
+            "test_item2",
+            properties ->  new TestItemComponent(properties)
     );
 
     public static final DeferredItem<Item> TEST_SWORD = ITEMS.registerSimpleItem(

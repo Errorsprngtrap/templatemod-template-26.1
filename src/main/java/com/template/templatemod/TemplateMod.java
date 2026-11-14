@@ -2,6 +2,7 @@ package com.template.templatemod;
 
 import com.template.templatemod.attachmenttype.ModAttachmentType;
 import com.template.templatemod.block.ModBlocks;
+import com.template.templatemod.component.ModDataComponentTypes;
 import com.template.templatemod.creativetab.ModCreativeTabs;
 import com.template.templatemod.effect.ModEffects;
 import com.template.templatemod.entity.ModEntities;
@@ -66,6 +67,8 @@ public class TemplateMod {
         ModSounds.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
+
+        ModDataComponentTypes.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 

@@ -8,11 +8,16 @@ import com.template.templatemod.entity.custom.PuffBallEntity;
 import com.template.templatemod.entity.custom.WarTurtleEntity;
 import com.template.templatemod.item.ModItems;
 import com.template.templatemod.potion.ModPotion;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.SpawnPlacementType;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 @EventBusSubscriber(modid = TemplateMod.MOD_ID)
 public class ModEvents {
@@ -28,5 +33,11 @@ public class ModEvents {
         event.put(ModEntities.PUFFBALL.get(), PuffBallEntity.createPuffBallAttributes().build());
         event.put(ModEntities.WAR_TURTLE.get(), WarTurtleEntity.createWarTurtleAttributes().build());
         event.put(ModEntities.GIRAFFE.get(), GiraffeEntity.createGiraffeAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacement(RegisterSpawnPlacementsEvent event) {
+        event.register(ModEntities.GIRAFFE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                PathfinderMob::checkMobSpawnRules,RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

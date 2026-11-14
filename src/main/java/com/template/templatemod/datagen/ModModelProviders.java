@@ -20,6 +20,8 @@ public class ModModelProviders extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         //items
         itemModels.generateFlatItem(ModItems.TEST_ITEM.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TEST_ITEM_TWO.get(), ModelTemplates.FLAT_ITEM);
+
         itemModels.generateFlatItem(ModItems.TEST_SWORD.get(),ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.TEST_PICKAXE.get(),ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.TEST_SHOVEL.get(),ModelTemplates.FLAT_HANDHELD_ITEM);

@@ -39,8 +39,8 @@ public class GiraffeModel extends EntityModel<GiraffeRenderState> {
 		this.r_leg = this.lower_body_group.getChild("r_leg");
 		this.r_leg2 = this.lower_body_group.getChild("r_leg2");
 
-		idleAnimation = CubeMobAnimations.Idle.bake(root);
-		walkingAnimation = CubeMobAnimations.Walk.bake(root);
+		idleAnimation = GiraffeAnimation.Idle.bake(root);
+		walkingAnimation = GiraffeAnimation.Walk.bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
