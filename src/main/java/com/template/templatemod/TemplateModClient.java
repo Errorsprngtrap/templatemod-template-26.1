@@ -11,16 +11,21 @@ import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleModel;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleRenderer;
+import com.template.templatemod.keymapping.ModKeyMappings;
 import com.template.templatemod.menu.ModMenuTypes;
 import com.template.templatemod.menu.custom.WarTurtleScreen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -35,6 +40,8 @@ public class TemplateModClient {
         // The config screen is accessed by going to the Mods screen > clicking on your mod > clicking on config.
         // Do not forget to add translations for your config options to the en_us.json file.
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
+        ModKeyMappings.register();
     }
 
     @SubscribeEvent
@@ -59,6 +66,18 @@ public class TemplateModClient {
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event){
         event.register(ModMenuTypes.WARTURTLE_MENU.get(),WarTurtleScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void registerKeymapping(RegisterKeyMappingsEvent event){
+        event.register(ModKeyMappings.PRESS_TEST_KEY.get());
+    }
+
+    @SubscribeEvent
+    public static void OnClientTick(ClientTickEvent.Post event){
+        while(ModKeyMappings.PRESS_TEST_KEY.get().consumeClick()){
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Test key"));
+        }
     }
 
 }
