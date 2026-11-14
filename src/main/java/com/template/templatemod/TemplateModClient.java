@@ -14,9 +14,11 @@ import com.template.templatemod.entity.client.WarTurtle.WarTurtleRenderer;
 import com.template.templatemod.keymapping.ModKeyMappings;
 import com.template.templatemod.menu.ModMenuTypes;
 import com.template.templatemod.menu.custom.WarTurtleScreen;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -68,8 +70,15 @@ public class TemplateModClient {
         event.register(ModMenuTypes.WARTURTLE_MENU.get(),WarTurtleScreen::new);
     }
 
+    //Custom category
+    public static final KeyMapping.Category EXAMPLE_CATEGORY = new KeyMapping.Category(Identifier.fromNamespaceAndPath("Template", "category"));
+
     @SubscribeEvent
     public static void registerKeymapping(RegisterKeyMappingsEvent event){
+        //category
+        event.registerCategory(EXAMPLE_CATEGORY);
+
+        //key
         event.register(ModKeyMappings.PRESS_TEST_KEY.get());
     }
 
