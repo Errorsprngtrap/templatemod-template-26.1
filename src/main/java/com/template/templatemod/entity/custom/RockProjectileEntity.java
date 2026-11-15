@@ -23,7 +23,7 @@ public class RockProjectileEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return null;
+        return new ItemStack(ModItems.ROCK.get(),1) ;
     }
 
 

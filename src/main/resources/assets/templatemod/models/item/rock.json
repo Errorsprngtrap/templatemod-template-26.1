@@ -2,7 +2,7 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "templatemod:items/rock"
+		"0": "templatemod:item/rock"
 	},
 	"elements": [
 		{
@@ -84,6 +84,23 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 7.5, 0]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 6.5, 0]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 7.25, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 8.25, 0]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		}
+	},
 	"groups": [
 		{
 			"name": "rock",
