@@ -51,6 +51,7 @@ public class ModModelProviders extends ModelProvider {
 
         itemModels.generateFlatItem(ModItems.WARTURTLE_ARMOR.get(),ModelTemplates.FLAT_ITEM);
 
+        itemModels.declareCustomModelItem(ModItems.ROCK.get());
         //blocks
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK.get());
     }

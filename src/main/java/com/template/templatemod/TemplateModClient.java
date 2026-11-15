@@ -9,13 +9,17 @@ import com.template.templatemod.entity.client.Giraffe.GiraffeSaddleModel;
 import com.template.templatemod.entity.client.ModModelLayerLocations;
 import com.template.templatemod.entity.client.PuffBall.PuffBallModel;
 import com.template.templatemod.entity.client.PuffBall.PuffBallRenderer;
+import com.template.templatemod.entity.client.Rock.RockModel;
+import com.template.templatemod.entity.client.Rock.RockRenderer;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleModel;
 import com.template.templatemod.entity.client.WarTurtle.WarTurtleRenderer;
 import com.template.templatemod.keymapping.ModKeyMappings;
 import com.template.templatemod.menu.ModMenuTypes;
 import com.template.templatemod.menu.custom.WarTurtleScreen;
+import com.template.templatemod.networking.packet.TestPacketC2S;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -25,12 +29,10 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = TemplateMod.MOD_ID, dist = Dist.CLIENT)
@@ -53,6 +55,8 @@ public class TemplateModClient {
         EntityRenderers.register(ModEntities.PUFFBALL.get(), PuffBallRenderer::new);
         EntityRenderers.register(ModEntities.WAR_TURTLE.get(), WarTurtleRenderer::new);
         EntityRenderers.register(ModEntities.GIRAFFE.get(), GiraffeRenderer::new);
+
+        EntityRenderers.register(ModEntities.ROCK.get(), RockRenderer::new);
     }
 
     @SubscribeEvent
@@ -63,6 +67,8 @@ public class TemplateModClient {
         event.registerLayerDefinition(ModModelLayerLocations.WARTURTLE_ARMOR, WarTurtleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.GIRAFFE, GiraffeModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayerLocations.GIRAFFE_SADDLE, GiraffeSaddleModel::createBodyLayer);
+
+        event.registerLayerDefinition(ModModelLayerLocations.ROCK, RockModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -71,7 +77,7 @@ public class TemplateModClient {
     }
 
     //Custom category
-    public static final KeyMapping.Category EXAMPLE_CATEGORY = new KeyMapping.Category(Identifier.fromNamespaceAndPath("Template", "category"));
+    public static final KeyMapping.Category EXAMPLE_CATEGORY = new KeyMapping.Category(Identifier.fromNamespaceAndPath("template", "category"));
 
     @SubscribeEvent
     public static void registerKeymapping(RegisterKeyMappingsEvent event){
@@ -85,8 +91,23 @@ public class TemplateModClient {
     @SubscribeEvent
     public static void OnClientTick(ClientTickEvent.Post event){
         while(ModKeyMappings.PRESS_TEST_KEY.get().consumeClick()){
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Test key"));
+            ClientPacketDistributor.sendToServer(new TestPacketC2S("Spring",1));
         }
+    }
+
+    @SubscribeEvent
+    public static void registerGUI(RegisterGuiLayersEvent event){
+        event.registerAboveAll(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"testgui"),(guiGraphics, deltaTracker) -> {
+            int x = guiGraphics.guiWidth()/2;
+            int y = guiGraphics.guiHeight();
+
+            if(!Minecraft.getInstance().player.isCreative() && !Minecraft.getInstance().player.isSpectator()){
+                for (int i = 0 ; i < 4; i++){
+                    guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED,Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"testgui"),
+                            16,16,0,0,x - 95 + i * 16,y-55,16,16);
+                }
+            }
+        });
     }
 
 }

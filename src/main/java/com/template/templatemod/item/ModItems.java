@@ -3,6 +3,7 @@ package com.template.templatemod.item;
 import com.template.templatemod.TemplateMod;
 import com.template.templatemod.armormaterial.ModArmorMaterials;
 import com.template.templatemod.entity.ModEntities;
+import com.template.templatemod.item.Custom.RockItem;
 import com.template.templatemod.item.Custom.TestItemComponent;
 import com.template.templatemod.item.Custom.WarTurtleArmor;
 import com.template.templatemod.toolmaterial.ModToolMaterial;
@@ -104,6 +105,11 @@ public class ModItems {
     public static final DeferredItem<Item> GIRAFFE_SPAWN_EGG = ITEMS.registerItem(
             "girffe_spawn_egg".toLowerCase(Locale.ROOT),
             properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.GIRAFFE.get()))
+    );
+
+    public static final DeferredItem<Item> ROCK = ITEMS.registerItem(
+            "rock",
+            properties -> new RockItem(properties.stacksTo(64))
     );
 
     public static void register(IEventBus eventBus){

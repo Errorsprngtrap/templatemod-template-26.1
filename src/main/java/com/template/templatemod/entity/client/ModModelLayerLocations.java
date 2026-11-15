@@ -22,4 +22,7 @@ public class ModModelLayerLocations {
 
     public static final ModelLayerLocation GIRAFFE_SADDLE =
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"giraffe_saddle"),"saddle");
+
+    public static final ModelLayerLocation ROCK =
+            new ModelLayerLocation(Identifier.fromNamespaceAndPath(TemplateMod.MOD_ID,"rock"),"main");
 }

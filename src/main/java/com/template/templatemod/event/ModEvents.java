@@ -40,4 +40,6 @@ public class ModEvents {
         event.register(ModEntities.GIRAFFE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 PathfinderMob::checkMobSpawnRules,RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
+
+
 }

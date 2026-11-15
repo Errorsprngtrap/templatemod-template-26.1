@@ -44,6 +44,8 @@ public class ModCreativeTabs {
                         output.accept(ModItems.GIRAFFE_SPAWN_EGG);
 
                         output.accept(ModItems.WARTURTLE_ARMOR);
+
+                        output.accept(ModItems.ROCK);
                     })
                     .build()
     );
