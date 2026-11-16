@@ -17,6 +17,8 @@ import com.template.templatemod.keymapping.ModKeyMappings;
 import com.template.templatemod.menu.ModMenuTypes;
 import com.template.templatemod.menu.custom.WarTurtleScreen;
 import com.template.templatemod.networking.packet.TestPacketC2S;
+import com.template.templatemod.particles.ModParticles;
+import com.template.templatemod.particles.TestParticle;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -108,6 +110,11 @@ public class TemplateModClient {
                 }
             }
         });
+    }
+
+    @SubscribeEvent
+    public static void registerParticleFatory(RegisterParticleProvidersEvent event){
+        event.registerSpriteSet(ModParticles.TEST_PARTICLE.get(), TestParticle.Provider::new);
     }
 
 }

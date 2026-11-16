@@ -43,7 +43,7 @@ public class ModEntities {
             ()-> EntityType.Builder.of(GiraffeEntity::new, MobCategory.CREATURE).sized(1,1).noLootTable().build(GIRAFFE_KEY));
 
     public static final Supplier<EntityType<RockProjectileEntity>> ROCK = ENTITY_TYPES.register("rock",
-            ()-> EntityType.Builder.<RockProjectileEntity>of(RockProjectileEntity::new, MobCategory.MISC).noLootTable().sized(1,1).build(ROCK_KEY));
+            ()-> EntityType.Builder.<RockProjectileEntity>of(RockProjectileEntity::new, MobCategory.MISC).noLootTable().sized(0.15F,0.15F).build(ROCK_KEY));
 
 
     public static void register(IEventBus bus) {

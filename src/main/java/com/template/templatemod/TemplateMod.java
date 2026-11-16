@@ -8,6 +8,7 @@ import com.template.templatemod.effect.ModEffects;
 import com.template.templatemod.entity.ModEntities;
 import com.template.templatemod.item.ModItems;
 import com.template.templatemod.menu.ModMenuTypes;
+import com.template.templatemod.particles.ModParticles;
 import com.template.templatemod.potion.ModPotion;
 import com.template.templatemod.sound.ModSounds;
 import org.slf4j.Logger;
@@ -69,6 +70,8 @@ public class TemplateMod {
         ModMenuTypes.register(modEventBus);
 
         ModDataComponentTypes.register(modEventBus);
+
+        ModParticles.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 

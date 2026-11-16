@@ -37,6 +37,10 @@ public class RockRenderer extends EntityRenderer<RockProjectileEntity, RockRende
         super.submit(state, poseStack, submitNodeCollector, camera);
 
         poseStack.pushPose();
+
+        poseStack.scale(-1.0F, -1.0F, 1.0F);
+        poseStack.translate(0.0F, -1.501F, 0.0F);
+
         submitNodeCollector.submitModel(
                 this.model, state, poseStack, RenderTypes.entitySolid(getTextureLocation()), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
         );
